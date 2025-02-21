@@ -59,6 +59,8 @@ The 2B model requires 48 GB memory and the 5B model requires 80 GB memory. Using
 
 ### Training scripts
 
+These are the fine-tuning scripts to train the ControlNet models on top of a pre-trained base model.
+
 AC3D: CogVideoX-2B
 ```bash
 bash scripts/train_2b.sh
