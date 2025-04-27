@@ -1,0 +1,42 @@
+# A directory with video files to process. The script would try to find all video files in this directory.
+src_dir: ~
+
+# Batch size during inference.
+batch_size: 16
+
+# In case we want to process only a subset of the files,
+# specify the start/end indicies (useful for multi-node parallel runs).
+start_idx: 0
+end_idx: ~
+
+# Where to save the results.
+save_path: ~
+
+# Should we save the results per file or just dump everything into one file at the end?
+# Saving per file is useful for debugging or some data pipelines.
+save_per_file: false
+
+num_frames: 15 # Number of frames to extract from each video.
+resolution: [256, 256] # To which size should we resize the frames.
+clip_duration: 5.0 # Duration of each clip in seconds.
+
+# Sometimes, searching for all video files in a directory is expensive (for non-local storages). You can input a pre-computed list of files.
+files_list_path: ~
+
+# Should we ignore the files that have already been processed? The detection is based on the stored annotations run with save_per_file=true.
+skip_existing: true
+
+# How many clips to extract from each video.
+max_num_clips_per_video: 16
+shuffle_seed: ~
+
+detection:
+  border_size: 8
+  tol: 0.05
+  static_pixels_ratio_thresh: 0.6 # If the colors std is below this threshold, we consider the frame to be moving due to uncertainty.
+  min_cluster_dist: 0.03
+  num_clusters: 3
+
+# When doing a parameter HPO, since we don't have a normal dataloader,
+# we can store all the decoded videos raw in RAM (e.g., set to `ram_cache_dir: /dev/shm/camera_clf_cache`)
+ram_cache_dir: ~

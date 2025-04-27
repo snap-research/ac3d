@@ -1,0 +1,16 @@
+numpy<2.0
+boto3
+loguru
+pyav
+timm==0.6.12
+mmcv
+moviepy
+opencv-python
+Pillow
+DateTime
+matplotlib
+
+# Install torch-related packages from the PyTorch index
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0
+torchvision
