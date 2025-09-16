@@ -43,7 +43,7 @@ class CustomCogVideoXTransformer3DModel(CogVideoXTransformer3DModel):
 
         # 3. Transformer blocks
         for i, block in enumerate(self.transformer_blocks):
-            if self.training and self.gradient_checkpointing:
+            if self.gradient_checkpointing:
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
